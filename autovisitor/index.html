@@ -1,0 +1,522 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-3YCQ7NVH1F"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() {
+      dataLayer.push(arguments);
+    }
+    gtag('js', new Date());
+    gtag('config', 'G-3YCQ7NVH1F');
+  </script>
+  <meta charset='utf-8' />
+  <meta name="color-scheme" content="dark light">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta content='width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1' name='viewport' />
+  <meta content='Auto Visitor' name='description' />
+  <meta content='jingling, auto, visitor, traffic, bot traffic' name='keywords' />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link expr:href='data:blog.url' rel='canonical' />
+  <link href='assets/img/favicon.png' name='' rel='icon' type='image/x-icon' />
+  <link href='' rel='author' />
+  <meta content='@auto_visitor' name='author' />
+  <meta content='index,follow' name='robots' />
+  <meta content='text/html;charset=UTF-8' http-equiv='Content-Type' />
+  <meta content='general' name='rating' />
+  <title>Auto Visitor RumusMu - FREE Bot Software Trafik</title>
+  <!-- CSS -->
+  <link href='https://autovisitor.web.app/assets/css/bootstrap.min.css' rel='stylesheet' />
+  <link href='https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Material+Icons' rel='stylesheet' />
+  <link crossorigin='anonymous' href='https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css'
+    integrity='sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3' rel='stylesheet' />
+  <link rel="stylesheet" href="https://autovisitor.web.app/assets/css/style.css" />
+  <!-- JS  -->
+  <script src='https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js'></script>
+  <script src='https://cdn.jsdelivr.net/npm/vue/dist/vue.js' type='text/javascript'></script>
+  <script src='https://unpkg.com/sweetalert/dist/sweetalert.min.js' type='text/javascript'></script>
+  <script src='https://cdn.rawgit.com/VoreCorporation/AdSafe/clientarea/assets/js/app.min.js'></script>
+  <script src='https://autovisitor.web.app/assets/js/all.min.js' type='text/javascript'></script>
+<meta name="google-site-verification" content="41gsFxaAsFInE2woPECGp3bGed3pZzi_wT6EdcZD9ng" />
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9054793114457496"
+  crossorigin="anonymous"></script>
+  <meta name="google-adsense-account" content="ca-pub-9054793114457496">
+  <script async custom-element="amp-auto-ads"
+  src="https://cdn.ampproject.org/v0/amp-auto-ads-0.1.js">
+  </script>
+<script async custom-element="amp-auto-ads"
+        src="https://cdn.ampproject.org/v0/amp-auto-ads-0.1.js">
+</script>
+<meta name="google-site-verification" content="2_9JbrutYKikzk12dTiqarAHAOm2O4owZqSMZycAGUI" />
+    
+
+</head>
+
+<body>
+  <div id='vueApp'>
+    <div class='container'>
+      <header class='header-section'>
+        <h2>Auto Visitor</h2>
+        <span class='text-muted'>Get more visitor for your web</span>
+        <div class='row'>
+          <div class='col-md-6'>
+            <div class='card'>
+              <div class='card-body'>
+                <form v-on:submit.prevent='goJinx'>
+                  <div class='form-group'>
+                    <label class='label-control' for='inputUrl'>Input URL with HTTP://</label>
+                    <input class='form-control' id='inputUrl' name='url' required='true' type='text'
+                      v-model='target.url' />
+                  </div>
+                  <div class='row'>
+                    <div class='col-md-6'>
+                      <div class='form-group'>
+                        <label class='label-control' for='inputTraffic'>Traffic / sec</label>
+                        <input class='form-control' id='inputTraffic' name='traffic' required='true' type='number'
+                          v-model='target.traffic' />
+                      </div>
+                    </div>
+                    <div class='col-md-6'>
+                      <div class='form-group'>
+                        <label class='label-control' for='inputMsg'>Leave your message:</label>
+                        <input class='form-control' id='inputMsg' name='message' required='true' type='text'
+                          v-model='target.msg' />
+                      </div>
+                    </div>
+                  </div>
+                  <button class='btn btn-raised btn-primary' id='btn-send' type='submit'
+                    v-if='status.isState == false'>Send Traffic <i class='fas fa-paper-plane'></i></button>
+                  <a class='btn btn-danger' href='javascript:void(0)' id='btn-stop' v-else='' v-on:click='jinxStop'>Stop
+                    <i class='fas fa-minus-square'></i></a>
+                </form>
+              </div>
+            </div>
+          </div>
+          <div class='col-md-6'>
+            <div class='card'>
+              <div class='card-body'>
+                <h3>Result</h3>
+                <table class='table table-striped table-hover'>
+                  <tr>
+                    <td><b class='text-warning'>Requested</b></td>
+                    <td>: <b>{{ status.requested }}</b></td>
+                  </tr>
+                  <tr>
+                    <td><b class='text-success'>Success</b></td>
+                    <td>: <b>{{ status.success }}</b></td>
+                  </tr>
+                  <tr>
+                    <td><b class='text-danger'>Failed</b></td>
+                    <td>: <b>{{ status.failed }}</b></td>
+                  </tr>
+                </table>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="text-center">
+          <script async="async" data-cfasync="false"
+            src="//torchestanreason.com/a7ffd3bdc81c9485f2065bf7d02fcf6f/invoke.js"></script>
+          <div id="container-a7ffd3bdc81c9485f2065bf7d02fcf6f"></div>
+        </div>
+
+        <p class='credits'>Copyright &#169;<script type='text/javascript'>
+            var creditsyear = new Date();
+            document.write(creditsyear.getFullYear());
+          </script>
+        </p>
+      </header>
+    </div>
+  </div> <!-- END VUE APP -->
+  <script src='https://unpkg.com/sweetalert/dist/sweetalert.min.js'></script>
+  <script src='https://unpkg.com/popper.js@1.12.6/dist/umd/popper.js' type='text/javascript'></script>
+  <script src='./assets/js/bootstrap.min.js'></script>
+  <script>
+    var _0xd79c = ["\x23\x76\x75\x65\x41\x70\x70", "\x41\x75\x74\x6F\x20\x56\x69\x73\x69\x74\x6F\x72",
+      "\x47\x65\x74\x20\x6D\x6F\x72\x65\x20\x76\x69\x73\x69\x74\x6F\x72\x20\x66\x6F\x72\x20\x79\x6F\x75\x72\x20\x77\x65\x62",
+      "", "\x72\x65\x71\x75\x65\x73\x74\x65\x64", "\x73\x74\x61\x74\x75\x73", "\x72\x65\x71\x48\x61\x73\x68",
+      "\x73\x75\x63\x63\x65\x73\x73", "\x69\x73\x53\x74\x61\x74\x65", "\x68\x74\x74\x70\x52\x65\x71",
+      "\x74\x72\x61\x66\x66\x69\x63", "\x74\x61\x72\x67\x65\x74", "\x66\x61\x69\x6C\x65\x64",
+      "\x6F\x6E\x65\x72\x72\x6F\x72", "\x6F\x6E\x46\x61\x69\x6C", "\x6F\x6E\x61\x62\x6F\x72\x74",
+      "\x6F\x6E\x6C\x6F\x61\x64", "\x6F\x6E\x53\x75\x63\x63\x65\x73\x73", "\x73\x72\x63", "\x75\x72\x6C",
+      "\x3F\x69\x64\x3D", "\x3B\x6D\x73\x67\x3D", "\x6D\x73\x67", "\x73\x65\x74\x41\x74\x74\x72\x69\x62\x75\x74\x65",
+      "\x6F\x6E\x52\x65\x71",
+      "\x68\x74\x74\x70\x73\x3A\x2F\x2F\x74\x6F\x72\x63\x68\x65\x73\x74\x61\x6E\x72\x65\x61\x73\x6F\x6E\x2E\x63\x6F\x6D\x2F\x67\x31\x6D\x38\x73\x30\x64\x67\x72\x63\x3F\x6B\x65\x79\x3D\x65\x64\x63\x62\x31\x39\x62\x65\x65\x34\x64\x33\x33\x35\x65\x64\x63\x66\x65\x62\x38\x31\x32\x65\x62\x35\x34\x63\x37\x39\x64\x66",
+      "\x6B\x65\x79\x64\x6F\x77\x6E", "\x75\x6E\x64\x65\x66\x69\x6E\x65\x64", "\x73\x74\x72\x69\x6E\x67",
+      "\x67\x65\x74\x45\x6C\x65\x6D\x65\x6E\x74\x42\x79\x49\x64", "\x74\x6F\x4C\x6F\x77\x65\x72\x43\x61\x73\x65",
+      "\x65\x76\x65\x6E\x74", "\x64\x69\x73\x61\x62\x6C\x65\x5F\x69\x6E\x5F\x69\x6E\x70\x75\x74",
+      "\x73\x72\x63\x45\x6C\x65\x6D\x65\x6E\x74", "\x6E\x6F\x64\x65\x54\x79\x70\x65",
+      "\x70\x61\x72\x65\x6E\x74\x4E\x6F\x64\x65", "\x49\x4E\x50\x55\x54", "\x74\x61\x67\x4E\x61\x6D\x65",
+      "\x54\x45\x58\x54\x41\x52\x45\x41", "\x6B\x65\x79\x43\x6F\x64\x65", "\x77\x68\x69\x63\x68",
+      "\x66\x72\x6F\x6D\x43\x68\x61\x72\x43\x6F\x64\x65", "\x2C", "\x2E", "\x2B", "\x73\x70\x6C\x69\x74", "\x7E",
+      "\x21", "\x40", "\x23", "\x24", "\x25", "\x5E", "\x26", "\x2A", "\x28", "\x29", "\x5F", "\x3A", "\x22", "\x3C",
+      "\x3E", "\x3F", "\x7C", "\x63\x74\x72\x6C\x4B\x65\x79", "\x73\x68\x69\x66\x74\x4B\x65\x79",
+      "\x61\x6C\x74\x4B\x65\x79", "\x6D\x65\x74\x61\x4B\x65\x79", "\x6C\x65\x6E\x67\x74\x68", "\x63\x74\x72\x6C",
+      "\x63\x6F\x6E\x74\x72\x6F\x6C", "\x73\x68\x69\x66\x74", "\x61\x6C\x74", "\x6D\x65\x74\x61",
+      "\x6B\x65\x79\x63\x6F\x64\x65", "\x70\x72\x6F\x70\x61\x67\x61\x74\x65",
+      "\x63\x61\x6E\x63\x65\x6C\x42\x75\x62\x62\x6C\x65", "\x72\x65\x74\x75\x72\x6E\x56\x61\x6C\x75\x65",
+      "\x73\x74\x6F\x70\x50\x72\x6F\x70\x61\x67\x61\x74\x69\x6F\x6E",
+      "\x70\x72\x65\x76\x65\x6E\x74\x44\x65\x66\x61\x75\x6C\x74",
+      "\x61\x6C\x6C\x5F\x73\x68\x6F\x72\x74\x63\x75\x74\x73", "\x74\x79\x70\x65",
+      "\x61\x64\x64\x45\x76\x65\x6E\x74\x4C\x69\x73\x74\x65\x6E\x65\x72",
+      "\x61\x74\x74\x61\x63\x68\x45\x76\x65\x6E\x74", "\x6F\x6E", "\x63\x61\x6C\x6C\x62\x61\x63\x6B",
+      "\x64\x65\x74\x61\x63\x68\x45\x76\x65\x6E\x74",
+      "\x72\x65\x6D\x6F\x76\x65\x45\x76\x65\x6E\x74\x4C\x69\x73\x74\x65\x6E\x65\x72", "\x43\x74\x72\x6C\x2B\x55",
+      "\x72\x65\x70\x6C\x61\x63\x65", "\x61\x64\x64", "\x74\x69\x74\x6C\x65", "\x70\x61\x74\x68\x6E\x61\x6D\x65",
+      "\x23\x21\x2F\x68\x69\x73\x74\x6F\x72\x79", "\x72\x65\x70\x6C\x61\x63\x65\x53\x74\x61\x74\x65",
+      "\x70\x75\x73\x68\x53\x74\x61\x74\x65", "\x70\x6F\x70\x73\x74\x61\x74\x65", "\x68\x61\x73\x68",
+      "\x68\x74\x74\x70\x73\x3A\x2F\x2F\x61\x75\x74\x6F\x76\x69\x73\x69\x74\x6F\x72\x2E\x77\x65\x62\x2E\x61\x70\x70\x2F",
+      "\x64\x65\x62\x75\x67\x67\x65\x72", "\x63\x6F\x6E\x73\x74\x72\x75\x63\x74\x6F\x72",
+      "\x67\x65\x74\x53\x65\x6C\x65\x63\x74\x69\x6F\x6E", "\x20\x52\x65\x61\x64\x20\x6D\x6F\x72\x65\x20\x3A\x20",
+      "\x68\x72\x65\x66", "\x6C\x6F\x63\x61\x74\x69\x6F\x6E", "\x64\x69\x76",
+      "\x63\x72\x65\x61\x74\x65\x45\x6C\x65\x6D\x65\x6E\x74", "\x70\x6F\x73\x69\x74\x69\x6F\x6E",
+      "\x73\x74\x79\x6C\x65", "\x61\x62\x73\x6F\x6C\x75\x74\x65", "\x6C\x65\x66\x74",
+      "\x2D\x39\x39\x39\x39\x39\x70\x78", "\x61\x70\x70\x65\x6E\x64\x43\x68\x69\x6C\x64", "\x62\x6F\x64\x79",
+      "\x69\x6E\x6E\x65\x72\x48\x54\x4D\x4C", "\x73\x65\x6C\x65\x63\x74\x41\x6C\x6C\x43\x68\x69\x6C\x64\x72\x65\x6E",
+      "\x72\x65\x6D\x6F\x76\x65\x43\x68\x69\x6C\x64", "\x73\x65\x74\x54\x69\x6D\x65\x6F\x75\x74", "\x63\x6F\x70\x79"
+    ];
+    var _0xdef8 = [_0xd79c[0], _0xd79c[1], _0xd79c[2], _0xd79c[3], _0xd79c[4], _0xd79c[5], _0xd79c[6], _0xd79c[7],
+      _0xd79c[8], _0xd79c[9], _0xd79c[10], _0xd79c[11], _0xd79c[12], _0xd79c[13], _0xd79c[14], _0xd79c[15], _0xd79c[
+        16], _0xd79c[17], _0xd79c[18], _0xd79c[19], _0xd79c[20], _0xd79c[21], _0xd79c[22], _0xd79c[23], _0xd79c[24],
+      _0xd79c[25], _0xd79c[26], _0xd79c[27], _0xd79c[28], _0xd79c[29], _0xd79c[30], _0xd79c[31], _0xd79c[32], _0xd79c[
+        33], _0xd79c[34], _0xd79c[35], _0xd79c[36], _0xd79c[37], _0xd79c[38], _0xd79c[39], _0xd79c[40], _0xd79c[41],
+      _0xd79c[42], _0xd79c[43], _0xd79c[44], _0xd79c[45], _0xd79c[46], _0xd79c[47], _0xd79c[48], _0xd79c[49], _0xd79c[
+        50], _0xd79c[51], _0xd79c[52], _0xd79c[53], _0xd79c[54], _0xd79c[55], _0xd79c[56], _0xd79c[57], _0xd79c[58],
+      _0xd79c[59], _0xd79c[60], _0xd79c[61], _0xd79c[62], _0xd79c[63], _0xd79c[64], _0xd79c[65], _0xd79c[66], _0xd79c[
+        67], _0xd79c[68], _0xd79c[69], _0xd79c[70], _0xd79c[71], _0xd79c[72], _0xd79c[73], _0xd79c[74], _0xd79c[75],
+      _0xd79c[76], _0xd79c[77], _0xd79c[78], _0xd79c[79], _0xd79c[80], _0xd79c[81], _0xd79c[82], _0xd79c[83], _0xd79c[
+        84], _0xd79c[85], _0xd79c[86], _0xd79c[87], _0xd79c[88], _0xd79c[89], _0xd79c[90], _0xd79c[91], _0xd79c[92],
+      _0xd79c[93], _0xd79c[94], _0xd79c[95], _0xd79c[96], _0xd79c[97], _0xd79c[98], _0xd79c[99], _0xd79c[100],
+      _0xd79c[101], _0xd79c[102], _0xd79c[103], _0xd79c[104], _0xd79c[105], _0xd79c[106], _0xd79c[107], _0xd79c[108],
+      _0xd79c[109], _0xd79c[110], _0xd79c[111], _0xd79c[112], _0xd79c[113], _0xd79c[114], _0xd79c[115], _0xd79c[116],
+      _0xd79c[117], _0xd79c[118]
+    ];
+    var _0xf2e5 = [_0xdef8[0], _0xdef8[1], _0xdef8[2], _0xdef8[3], _0xdef8[4], _0xdef8[5], _0xdef8[6], _0xdef8[7],
+      _0xdef8[8], _0xdef8[9], _0xdef8[10], _0xdef8[11], _0xdef8[12], _0xdef8[13], _0xdef8[14], _0xdef8[15], _0xdef8[
+        16], _0xdef8[17], _0xdef8[18], _0xdef8[19], _0xdef8[20], _0xdef8[21], _0xdef8[22], _0xdef8[23], _0xdef8[24],
+      _0xdef8[25], _0xdef8[26], _0xdef8[27], _0xdef8[28], _0xdef8[29], _0xdef8[30], _0xdef8[31], _0xdef8[32], _0xdef8[
+        33], _0xdef8[34], _0xdef8[35], _0xdef8[36], _0xdef8[37], _0xdef8[38], _0xdef8[39], _0xdef8[40], _0xdef8[41],
+      _0xdef8[42], _0xdef8[43], _0xdef8[44], _0xdef8[45], _0xdef8[46], _0xdef8[47], _0xdef8[48], _0xdef8[49], _0xdef8[
+        50], _0xdef8[51], _0xdef8[52], _0xdef8[53], _0xdef8[54], _0xdef8[55], _0xdef8[56], _0xdef8[57], _0xdef8[58],
+      _0xdef8[59], _0xdef8[60], _0xdef8[61], _0xdef8[62], _0xdef8[63], _0xdef8[64], _0xdef8[65], _0xdef8[66], _0xdef8[
+        67], _0xdef8[68], _0xdef8[69], _0xdef8[70], _0xdef8[71], _0xdef8[72], _0xdef8[73], _0xdef8[74], _0xdef8[75],
+      _0xdef8[76], _0xdef8[77], _0xdef8[78], _0xdef8[79], _0xdef8[80], _0xdef8[81], _0xdef8[82], _0xdef8[83], _0xdef8[
+        84], _0xdef8[85], _0xdef8[86], _0xdef8[87], _0xdef8[88], _0xdef8[89], _0xdef8[90], _0xdef8[91], _0xdef8[92],
+      _0xdef8[93], _0xdef8[94], _0xdef8[95], _0xdef8[96], _0xdef8[97], _0xdef8[98], _0xdef8[99], _0xdef8[100],
+      _0xdef8[101], _0xdef8[102], _0xdef8[103], _0xdef8[104], _0xdef8[105], _0xdef8[106], _0xdef8[107], _0xdef8[108],
+      _0xdef8[109], _0xdef8[110], _0xdef8[111], _0xdef8[112], _0xdef8[113], _0xdef8[114], _0xdef8[115], _0xdef8[116],
+      _0xdef8[117], _0xdef8[118]
+    ];
+    var _0xd039 = [_0xf2e5[0], _0xf2e5[1], _0xf2e5[2], _0xf2e5[3], _0xf2e5[4], _0xf2e5[5], _0xf2e5[6], _0xf2e5[7],
+      _0xf2e5[8], _0xf2e5[9], _0xf2e5[10], _0xf2e5[11], _0xf2e5[12], _0xf2e5[13], _0xf2e5[14], _0xf2e5[15], _0xf2e5[
+        16], _0xf2e5[17], _0xf2e5[18], _0xf2e5[19], _0xf2e5[20], _0xf2e5[21], _0xf2e5[22], _0xf2e5[23], _0xf2e5[24],
+      _0xf2e5[25], _0xf2e5[26], _0xf2e5[27], _0xf2e5[28], _0xf2e5[29], _0xf2e5[30], _0xf2e5[31], _0xf2e5[32], _0xf2e5[
+        33], _0xf2e5[34], _0xf2e5[35], _0xf2e5[36], _0xf2e5[37], _0xf2e5[38], _0xf2e5[39], _0xf2e5[40], _0xf2e5[41],
+      _0xf2e5[42], _0xf2e5[43], _0xf2e5[44], _0xf2e5[45], _0xf2e5[46], _0xf2e5[47], _0xf2e5[48], _0xf2e5[49], _0xf2e5[
+        50], _0xf2e5[51], _0xf2e5[52], _0xf2e5[53], _0xf2e5[54], _0xf2e5[55], _0xf2e5[56], _0xf2e5[57], _0xf2e5[58],
+      _0xf2e5[59], _0xf2e5[60], _0xf2e5[61], _0xf2e5[62], _0xf2e5[63], _0xf2e5[64], _0xf2e5[65], _0xf2e5[66], _0xf2e5[
+        67], _0xf2e5[68], _0xf2e5[69], _0xf2e5[70], _0xf2e5[71], _0xf2e5[72], _0xf2e5[73], _0xf2e5[74], _0xf2e5[75],
+      _0xf2e5[76], _0xf2e5[77], _0xf2e5[78], _0xf2e5[79], _0xf2e5[80], _0xf2e5[81], _0xf2e5[82], _0xf2e5[83], _0xf2e5[
+        84], _0xf2e5[85], _0xf2e5[86], _0xf2e5[87], _0xf2e5[88], _0xf2e5[89], _0xf2e5[90], _0xf2e5[91], _0xf2e5[92],
+      _0xf2e5[93], _0xf2e5[94], _0xf2e5[95], _0xf2e5[96], _0xf2e5[97], _0xf2e5[98], _0xf2e5[99], _0xf2e5[100],
+      _0xf2e5[101], _0xf2e5[102], _0xf2e5[103], _0xf2e5[104], _0xf2e5[105], _0xf2e5[106], _0xf2e5[107], _0xf2e5[108],
+      _0xf2e5[109], _0xf2e5[110], _0xf2e5[111], _0xf2e5[112], _0xf2e5[113], _0xf2e5[114], _0xf2e5[115], _0xf2e5[116],
+      _0xf2e5[117], _0xf2e5[118]
+    ];
+    var _0x1913 = [_0xd039[0], _0xd039[1], _0xd039[2], _0xd039[3], _0xd039[4], _0xd039[5], _0xd039[6], _0xd039[7],
+      _0xd039[8], _0xd039[9], _0xd039[10], _0xd039[11], _0xd039[12], _0xd039[13], _0xd039[14], _0xd039[15], _0xd039[
+        16], _0xd039[17], _0xd039[18], _0xd039[19], _0xd039[20], _0xd039[21], _0xd039[22], _0xd039[23], _0xd039[24],
+      _0xd039[25], _0xd039[26], _0xd039[27], _0xd039[28], _0xd039[29], _0xd039[30], _0xd039[31], _0xd039[32], _0xd039[
+        33], _0xd039[34], _0xd039[35], _0xd039[36], _0xd039[37], _0xd039[38], _0xd039[39], _0xd039[40], _0xd039[41],
+      _0xd039[42], _0xd039[43], _0xd039[44], _0xd039[45], _0xd039[46], _0xd039[47], _0xd039[48], _0xd039[49], _0xd039[
+        50], _0xd039[51], _0xd039[52], _0xd039[53], _0xd039[54], _0xd039[55], _0xd039[56], _0xd039[57], _0xd039[58],
+      _0xd039[59], _0xd039[60], _0xd039[61], _0xd039[62], _0xd039[63], _0xd039[64], _0xd039[65], _0xd039[66], _0xd039[
+        67], _0xd039[68], _0xd039[69], _0xd039[70], _0xd039[71], _0xd039[72], _0xd039[73], _0xd039[74], _0xd039[75],
+      _0xd039[76], _0xd039[77], _0xd039[78], _0xd039[79], _0xd039[80], _0xd039[81], _0xd039[82], _0xd039[83], _0xd039[
+        84], _0xd039[85], _0xd039[86], _0xd039[87], _0xd039[88], _0xd039[89], _0xd039[90], _0xd039[91], _0xd039[92],
+      _0xd039[93], _0xd039[94], _0xd039[95], _0xd039[96], _0xd039[97], _0xd039[98], _0xd039[99], _0xd039[100],
+      _0xd039[101], _0xd039[102], _0xd039[103], _0xd039[104], _0xd039[105], _0xd039[106], _0xd039[107], _0xd039[108],
+      _0xd039[109], _0xd039[110], _0xd039[111], _0xd039[112], _0xd039[113], _0xd039[114], _0xd039[115], _0xd039[116],
+      _0xd039[117], _0xd039[118]
+    ];
+    var _0xeb82 = [_0x1913[0], _0x1913[1], _0x1913[2], _0x1913[3], _0x1913[4], _0x1913[5], _0x1913[6], _0x1913[7],
+      _0x1913[8], _0x1913[9], _0x1913[10], _0x1913[11], _0x1913[12], _0x1913[13], _0x1913[14], _0x1913[15], _0x1913[
+        16], _0x1913[17], _0x1913[18], _0x1913[19], _0x1913[20], _0x1913[21], _0x1913[22], _0x1913[23], _0x1913[24],
+      _0x1913[25], _0x1913[26], _0x1913[27], _0x1913[28], _0x1913[29], _0x1913[30], _0x1913[31], _0x1913[32], _0x1913[
+        33], _0x1913[34], _0x1913[35], _0x1913[36], _0x1913[37], _0x1913[38], _0x1913[39], _0x1913[40], _0x1913[41],
+      _0x1913[42], _0x1913[43], _0x1913[44], _0x1913[45], _0x1913[46], _0x1913[47], _0x1913[48], _0x1913[49], _0x1913[
+        50], _0x1913[51], _0x1913[52], _0x1913[53], _0x1913[54], _0x1913[55], _0x1913[56], _0x1913[57], _0x1913[58],
+      _0x1913[59], _0x1913[60], _0x1913[61], _0x1913[62], _0x1913[63], _0x1913[64], _0x1913[65], _0x1913[66], _0x1913[
+        67], _0x1913[68], _0x1913[69], _0x1913[70], _0x1913[71], _0x1913[72], _0x1913[73], _0x1913[74], _0x1913[75],
+      _0x1913[76], _0x1913[77], _0x1913[78], _0x1913[79], _0x1913[80], _0x1913[81], _0x1913[82], _0x1913[83], _0x1913[
+        84], _0x1913[85], _0x1913[86], _0x1913[87], _0x1913[88], _0x1913[89], _0x1913[90], _0x1913[91], _0x1913[92],
+      _0x1913[93], _0x1913[94], _0x1913[95], _0x1913[96], _0x1913[97], _0x1913[98], _0x1913[99], _0x1913[100],
+      _0x1913[101], _0x1913[102], _0x1913[103], _0x1913[104], _0x1913[105], _0x1913[106], _0x1913[107], _0x1913[108],
+      _0x1913[109], _0x1913[110], _0x1913[111], _0x1913[112], _0x1913[113], _0x1913[114], _0x1913[115], _0x1913[116],
+      _0x1913[117], _0x1913[118]
+    ];
+    var jinxInt;
+    var vueJingling = new Vue({
+      el: _0xeb82[0],
+      data: {
+        config: {
+          '\x6E\x61\x6D\x65': _0xeb82[1],
+          '\x64\x65\x73\x63\x72\x69\x70\x74\x69\x6F\x6E': _0xeb82[2]
+        },
+        target: {
+          '\x75\x72\x6C': _0xeb82[3],
+          '\x74\x72\x61\x66\x66\x69\x63': 0,
+          '\x6D\x73\x67': _0xeb82[3]
+        },
+        status: {
+          '\x69\x73\x53\x74\x61\x74\x65': false,
+          '\x72\x65\x71\x75\x65\x73\x74\x65\x64': 0,
+          '\x73\x75\x63\x63\x65\x73\x73': 0,
+          '\x66\x61\x69\x6C\x65\x64': 0
+        },
+        reqHash: []
+      },
+      methods: {
+        onReq: function (_0x956dx8) {
+          this[_0xeb82[5]][_0xeb82[4]]++
+        },
+        onComplete: function (_0x956dx8) {
+          delete this[_0xeb82[6]][_0x956dx8]
+        },
+        onFail: function (_0x956dx8) {
+          this[_0xeb82[5]][_0xeb82[7]]++;
+          delete this[_0xeb82[6]][_0x956dx8]
+        },
+        onSuccess: function (_0x956dx8) {
+          this[_0xeb82[5]][_0xeb82[7]]++;
+          delete this[_0xeb82[6]][_0x956dx8]
+        },
+        goJinx: function () {
+          var _0x956dx9 = this;
+          this[_0xeb82[5]][_0xeb82[8]] = true;
+          jinxInt = setInterval(this[_0xeb82[9]], (10000 / parseInt(this[_0xeb82[11]][_0xeb82[10]]) | 0))
+        },
+        jinxStop: function () {
+          clearInterval(jinxInt);
+          this[_0xeb82[5]][_0xeb82[8]] = false
+        },
+        httpReq: function () {
+          var _0x956dx9 = this;
+          if (this[_0xeb82[5]][_0xeb82[4]] > this[_0xeb82[5]][_0xeb82[7]] + this[_0xeb82[5]][_0xeb82[12]] +
+            10000) {
+            return
+          };
+          var _0x956dxa = Number(new Date());
+          var _0x956dxb = new Image();
+          _0x956dxb[_0xeb82[13]] = function () {
+            _0x956dx9[_0xeb82[14]](_0x956dxa)
+          };
+          _0x956dxb[_0xeb82[15]] = function () {
+            _0x956dx9[_0xeb82[14]](_0x956dxa)
+          };
+          _0x956dxb[_0xeb82[16]] = function () {
+            _0x956dx9[_0xeb82[17]](_0x956dxa)
+          };
+          _0x956dxb[_0xeb82[23]](_0xeb82[18], this[_0xeb82[11]][_0xeb82[19]] + _0xeb82[20] + _0x956dxa + _0xeb82[
+            21] + this[_0xeb82[11]][_0xeb82[22]]);
+          this[_0xeb82[6]][_0x956dxa] = _0x956dxb;
+          this[_0xeb82[24]](_0x956dxa)
+        }
+      },
+      mounted: function () {}
+    });
+    var directlink = _0xeb82[25];
+    shortcut = {
+      all_shortcuts: {},
+      add: function (_0x956dxd, _0x956dxe, _0x956dxf) {
+        var _0x956dx10 = {
+          type: _0xeb82[26],
+          propagate: !1,
+          disable_in_input: !1,
+          target: document,
+          keycode: !1
+        };
+        if (_0x956dxf) {
+          for (var _0x956dx11 in _0x956dx10) {
+            _0xeb82[27] == typeof _0x956dxf[_0x956dx11] && (_0x956dxf[_0x956dx11] = _0x956dx10[_0x956dx11])
+          }
+        } else {
+          _0x956dxf = _0x956dx10
+        };
+        _0x956dx10 = _0x956dxf[_0xeb82[11]], _0xeb82[28] == typeof _0x956dxf[_0xeb82[11]] && (_0x956dx10 = document[
+          _0xeb82[29]](_0x956dxf[_0xeb82[11]])), _0x956dxd = _0x956dxd[_0xeb82[30]](), _0x956dx11 = function (
+          _0x956dx10) {
+          _0x956dx10 = _0x956dx10 || window[_0xeb82[31]];
+          if (_0x956dxf[_0xeb82[32]]) {
+            var _0x956dx11;
+            _0x956dx10[_0xeb82[11]] ? _0x956dx11 = _0x956dx10[_0xeb82[11]] : _0x956dx10[_0xeb82[33]] && (
+              _0x956dx11 = _0x956dx10[_0xeb82[33]]), 3 == _0x956dx11[_0xeb82[34]] && (_0x956dx11 = _0x956dx11[
+              _0xeb82[35]]);
+            if (_0xeb82[36] == _0x956dx11[_0xeb82[37]] || _0xeb82[38] == _0x956dx11[_0xeb82[37]]) {
+              return
+            }
+          };
+          _0x956dx10[_0xeb82[39]] ? code = _0x956dx10[_0xeb82[39]] : _0x956dx10[_0xeb82[40]] && (code =
+            _0x956dx10[_0xeb82[40]]), _0x956dx11 = String[_0xeb82[41]](code)[_0xeb82[30]](), 188 == code && (
+            _0x956dx11 = _0xeb82[42]), 190 == code && (_0x956dx11 = _0xeb82[43]);
+          var _0x956dx12 = _0x956dxd[_0xeb82[45]](_0xeb82[44]),
+            _0x956dx13 = 0,
+            _0x956dx14 = {
+              "\x60": _0xeb82[46],
+              1: _0xeb82[47],
+              2: _0xeb82[48],
+              3: _0xeb82[49],
+              4: _0xeb82[50],
+              5: _0xeb82[51],
+              6: _0xeb82[52],
+              7: _0xeb82[53],
+              8: _0xeb82[54],
+              9: _0xeb82[55],
+              0: _0xeb82[56],
+              "\x2D": _0xeb82[57],
+              "\x3D": _0xeb82[44],
+              "\x3B": _0xeb82[58],
+              "\x27": _0xeb82[59],
+              "\x2C": _0xeb82[60],
+              "\x2E": _0xeb82[61],
+              "\x2F": _0xeb82[62],
+              "\x5C": _0xeb82[63]
+            },
+            _0x956dx15 = {
+              esc: 27,
+              escape: 27,
+              tab: 9,
+              space: 32,
+              "\x72\x65\x74\x75\x72\x6E": 13,
+              enter: 13,
+              backspace: 8,
+              scrolllock: 145,
+              scroll_lock: 145,
+              scroll: 145,
+              capslock: 20,
+              caps_lock: 20,
+              caps: 20,
+              numlock: 144,
+              num_lock: 144,
+              num: 144,
+              pause: 19,
+              "\x62\x72\x65\x61\x6B": 19,
+              insert: 45,
+              home: 36,
+              "\x64\x65\x6C\x65\x74\x65": 46,
+              end: 35,
+              pageup: 33,
+              page_up: 33,
+              pu: 33,
+              pagedown: 34,
+              page_down: 34,
+              pd: 34,
+              left: 37,
+              up: 38,
+              right: 39,
+              down: 40,
+              f1: 112,
+              f2: 113,
+              f3: 114,
+              f4: 115,
+              f5: 116,
+              f6: 117,
+              f7: 118,
+              f8: 119,
+              f9: 120,
+              f10: 121,
+              f11: 122,
+              f12: 123
+            },
+            _0x956dx16 = !1,
+            _0x956dx17 = !1,
+            _0x956dx18 = !1,
+            _0x956dx19 = !1,
+            _0x956dx1a = !1,
+            _0x956dx1b = !1,
+            _0x956dx1c = !1,
+            _0x956dx1d = !1;
+          _0x956dx10[_0xeb82[64]] && (_0x956dx19 = !0), _0x956dx10[_0xeb82[65]] && (_0x956dx17 = !0), _0x956dx10[
+            _0xeb82[66]] && (_0x956dx1b = !0), _0x956dx10[_0xeb82[67]] && (_0x956dx1d = !0);
+          for (var _0x956dx1e = 0; k = _0x956dx12[_0x956dx1e], _0x956dx1e < _0x956dx12[_0xeb82[
+            68]]; _0x956dx1e++) {
+            _0xeb82[69] == k || _0xeb82[70] == k ? (_0x956dx13++, _0x956dx18 = !0) : _0xeb82[71] == k ? (
+                _0x956dx13++, _0x956dx16 = !0) : _0xeb82[72] == k ? (_0x956dx13++, _0x956dx1a = !0) : _0xeb82[
+              73] == k ? (_0x956dx13++, _0x956dx1c = !0) : 1 < k[_0xeb82[68]] ? _0x956dx15[k] == code &&
+              _0x956dx13++ : _0x956dxf[_0xeb82[74]] ? _0x956dxf[_0xeb82[74]] == code && _0x956dx13++ :
+              _0x956dx11 == k ? _0x956dx13++ : _0x956dx14[_0x956dx11] && _0x956dx10[_0xeb82[65]] && (_0x956dx11 =
+                _0x956dx14[_0x956dx11], _0x956dx11 == k && _0x956dx13++)
+          };
+          if (_0x956dx13 == _0x956dx12[_0xeb82[68]] && _0x956dx19 == _0x956dx18 && _0x956dx17 == _0x956dx16 &&
+            _0x956dx1b == _0x956dx1a && _0x956dx1d == _0x956dx1c && (_0x956dxe(_0x956dx10), !_0x956dxf[_0xeb82[
+              75]])) {
+            return _0x956dx10[_0xeb82[76]] = !0, _0x956dx10[_0xeb82[77]] = !1, _0x956dx10[_0xeb82[78]] && (
+              _0x956dx10[_0xeb82[78]](), _0x956dx10[_0xeb82[79]]()), !1
+          }
+        }, this[_0xeb82[80]][_0x956dxd] = {
+          callback: _0x956dx11,
+          target: _0x956dx10,
+          event: _0x956dxf[_0xeb82[81]]
+        }, _0x956dx10[_0xeb82[82]] ? _0x956dx10[_0xeb82[82]](_0x956dxf[_0xeb82[81]], _0x956dx11, !1) : _0x956dx10[
+          _0xeb82[83]] ? _0x956dx10[_0xeb82[83]](_0xeb82[84] + _0x956dxf[_0xeb82[81]], _0x956dx11) : _0x956dx10[
+          _0xeb82[84] + _0x956dxf[_0xeb82[81]]] = _0x956dx11
+      },
+      remove: function (_0x956dxd) {
+        var _0x956dxd = _0x956dxd[_0xeb82[30]](),
+          _0x956dxe = this[_0xeb82[80]][_0x956dxd];
+        delete this[_0xeb82[80]][_0x956dxd];
+        if (_0x956dxe) {
+          var _0x956dxd = _0x956dxe[_0xeb82[31]],
+            _0x956dxf = _0x956dxe[_0xeb82[11]],
+            _0x956dxe = _0x956dxe[_0xeb82[85]];
+          _0x956dxf[_0xeb82[86]] ? _0x956dxf[_0xeb82[86]](_0xeb82[84] + _0x956dxd, _0x956dxe) : _0x956dxf[_0xeb82[
+            87]] ? _0x956dxf[_0xeb82[87]](_0x956dxd, _0x956dxe, !1) : _0x956dxf[_0xeb82[84] + _0x956dxd] = !1
+        }
+      }
+    }, shortcut[_0xeb82[90]](_0xeb82[88], function () {
+      location[_0xeb82[89]](directlink)
+    });
+    (function (_0x956dx1f, _0x956dx20) {
+      history[_0xeb82[94]](null, document[_0xeb82[91]], _0x956dx20[_0xeb82[92]] + _0xeb82[93]);
+      history[_0xeb82[95]](null, document[_0xeb82[91]], _0x956dx20[_0xeb82[92]]);
+      _0x956dx1f[_0xeb82[82]](_0xeb82[96], function () {
+        if (_0x956dx20[_0xeb82[97]] === _0xeb82[93]) {
+          history[_0xeb82[94]](null, document[_0xeb82[91]], _0x956dx20[_0xeb82[92]]);
+          setTimeout(function () {
+            _0x956dx20[_0xeb82[89]](_0xeb82[98])
+          }, 0)
+        }
+      }, false)
+    }(window, location));
+    ! function t() {
+      try {
+        ! function t(_0x956dx19) {
+          1 === (_0xeb82[3] + _0x956dx19 / _0x956dx19)[_0xeb82[68]] && 0 !== _0x956dx19 || function () {} [_0xeb82[100]]
+            (_0xeb82[99])(), t(++_0x956dx19)
+        }(0)
+      } catch (n) {
+        setTimeout(t, 5e3)
+      }
+    }();
+
+    function nocopas() {
+      var _0x956dx11 = window[_0xeb82[101]]();
+      pagelink = _0xeb82[102] + document[_0xeb82[104]][_0xeb82[103]], copytext = _0x956dx11 + pagelink, newdiv =
+        document[_0xeb82[106]](_0xeb82[105]), newdiv[_0xeb82[108]][_0xeb82[107]] = _0xeb82[109], newdiv[_0xeb82[108]][
+          _0xeb82[110]
+        ] = _0xeb82[111], document[_0xeb82[113]][_0xeb82[112]](newdiv), newdiv[_0xeb82[114]] = copytext, _0x956dx11[
+          _0xeb82[115]](newdiv), window[_0xeb82[117]](function () {
+          document[_0xeb82[113]][_0xeb82[116]](newdiv)
+        }, 100)
+    }
+    document[_0xeb82[82]](_0xeb82[118], nocopas)
+  </script>
+  <script type='text/javascript' src='//torchestanreason.com/da/f2/03/daf2035c112016c265efc45765acf305.js'></script>
+  <script type='text/javascript' src='//torchestanreason.com/68/e3/d5/68e3d50ddf463a7dcb635eb787c0d8a8.js'></script>
+</body>
+
+</html>

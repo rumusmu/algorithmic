@@ -95,7 +95,27 @@
         </li>
     </ol>
 </div>
-
+<div id="paypal-button-container-P-0F321829CN928474SM74IZ6Y"></div>
+<script src="https://www.paypal.com/sdk/js?client-id=AeOdKtJbDLbt0CW5jVHQFk0UNnTxhqDnlsoPvdzzeEJQ8MF2YU6KjYxRSZGC_ft57oxQt-rDKn0_H4Fn&vault=true&intent=subscription" data-sdk-integration-source="button-factory"></script>
+<script>
+  paypal.Buttons({
+      style: {
+          shape: 'rect',
+          color: 'gold',
+          layout: 'vertical',
+          label: 'subscribe'
+      },
+      createSubscription: function(data, actions) {
+        return actions.subscription.create({
+          /* Creates the subscription */
+          plan_id: 'P-0F321829CN928474SM74IZ6Y'
+        });
+      },
+      onApprove: function(data, actions) {
+        alert(data.subscriptionID); // You can add optional success message for the subscriber here
+      }
+  }).render('#paypal-button-container-P-0F321829CN928474SM74IZ6Y'); // Renders the PayPal button
+</script>
 <!-- Footer -->
 <footer class="content">
 <p>Created by <a href="https://github.com/JunShern/">junshern</a> as a 2018 <a href="https://summerofcode.withgoogle.com/">Google Summer of Code</a> project for the <a href="https://processingfoundation.org/">Processing Foundation</a>, using <a href="https://p5js.org/">p5.js</a> and the <a href="https://p5js.org/reference/#/libraries/p5.sound">p5.sound</a> add-on library. Special thanks to <a href="http://www.jasonsigal.cc/">Jason Sigal</a> for feedback and guidance on the development of this tutorial and its accompanying examples.</p>
